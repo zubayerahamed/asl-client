@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Product</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1 class="text-center">Products</h1>
+			
+			<div class="col-md-12">
+				<a th:href="@{/product/new}" class="btn btn-success btn-sm">Add Product</a>
+			</div>
+			<div class="col-md-12" style="margin-top: 10px;">
+				<table class="table table-stripped table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Rate</th>
+							<th>Unit</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="p : ${products}">
+							<td th:text="${p.name}"></td>
+							<td th:text="${p.rate}"></td>
+							<td th:text="${p.unit}"></td>
+							<td>
+								<a th:href="@{/product/edit/} + ${p.pid}" class="btn btn-primary btn-sm">Edit</a>
+								<a th:href="@{/product/delete/} + ${p.pid}" class="btn btn-danger btn-sm">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

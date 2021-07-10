@@ -1,0 +1,36 @@
+logging: 
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: INFO
+
+server:
+  servlet:
+    context-path: /client/
+    session: 
+      persistent: true
+  port: 8081
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  profiles: 
+    active: dev
+  application:
+    name: asl-client
+  thymeleaf:
+    cache: false
+  jackson:
+    serialization:
+      indent-output: true
+
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
+  client:
+    service-url:
+      defaultZone: http://62.171.179.61:8761/eureka
